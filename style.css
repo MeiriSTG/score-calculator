@@ -1,0 +1,47 @@
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+select {
+  height: 2rem;
+}
+
+#main {
+  text-align: center;
+}
+
+#score-div {
+  margin: 1rem 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#score-table,
+#time-table {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  padding: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: left;
+}
+
+#score-table th,
+#score-table td,
+#time-table th,
+#time-table td {
+  padding: 0 0.25rem;
+  border: 1px solid black;
+}
+
+#score-table th,
+#time-table th {
+  color: white;
+  background-color: #333;
+}
+
+#score-table tr:nth-child(odd) td {
+  background-color: #DDD;
+}

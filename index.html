@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+  <link rel="stylesheet" href="./style.css?20240121">
+  <script src="./data.js?20240121"></script>
+  <script src="./script.js?20240121"></script>
+  <title>制限時間・基礎点</title>
+</head>
+
+<body>
+  <h1>制限時間・基礎点表</h1>
+  <select id="title">
+    <option value="th6">東方紅魔郷</option>
+    <option value="th7">東方妖々夢</option>
+    <option value="th8">東方永夜抄</option>
+    <option value="th10">東方風神録</option>
+    <option value="th11">東方地霊殿</option>
+    <option value="th12">東方星蓮船</option>
+    <option value="th12.5">妖精大戦争</option>
+    <option value="th13">東方神霊廟</option>
+    <option value="th14">東方輝針城</option>
+    <option value="th15">東方紺珠伝</option>
+    <option value="th16">東方天空璋</option>
+    <option value="th17">東方鬼形獣</option>
+    <option value="th18">東方虹龍洞</option>
+  </select>
+  <select id="difficult"></select>
+  <select id="character"></select>
+  <select id="continued">
+    <option value="no">コンティニューなし</option>
+    <option value="yes">コンティニューあり</option>
+  </select>
+  <span id="numeric-desc"></span>
+  <input id="numeric" type="number" min="0" value="0" step="1" />
+  <div id="main">
+    <div id="score-div">
+      <span id="score-fomula">0 =</span>
+      <span id="score-result">0</span>
+    </div>
+    <label>制限時間表 [minutes]</label>
+    <table id="time-table"></table>
+    <label>基礎点表 [points]</label>
+    <table id="score-table"></table>
+  </div>
+</body>
+
+</html>
