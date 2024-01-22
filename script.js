@@ -109,6 +109,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  const onUpdateDifficult = () => {
+    const titleIndex = titleValueToIndex(title.value)
+    const difficultIndex = difficultValueToIndex(difficult.value)
+    const scores = SCORES[titleIndex]
+
+    if (difficult.value === "Easy") {
+      continued.style.display = "inline"
+    } else {
+      continued.style.display = "none"
+    }
+    if (isNB(difficultIndex)) {
+      numericDesc.innerText = "被弾数: "
+    } else {
+      numericDesc.innerText = "残機数: "
+    }
+
+    let characterInnerHTML = ""
+    for (let i = 0; i < scores.length; ++i) {
+      if (scores[i].score[difficultIndex] !== '-') {
+        characterInnerHTML += wrapWithIf("option", "value='" + i + "'", scores[i].name)
+      }
+    }
+    character.innerHTML = characterInnerHTML
+
+    calculate()
+  }
+
   const onUpdateTitle = () => {
     const index = titleValueToIndex(title.value)
     const scores = SCORES[index]
@@ -177,39 +204,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. assign
     timeTable.innerHTML = timeTableInnerHTML
 
-    calculate()
-  }
-
-  const onUpdateDifficult = () => {
-    const titleIndex = titleValueToIndex(title.value)
-    const difficultIndex = difficultValueToIndex(difficult.value)
-    const scores = SCORES[titleIndex]
-
-    if (difficult.value === "Easy") {
-      continued.style.display = "inline"
-    } else {
-      continued.style.display = "none"
-    }
-    if (isNB(difficultIndex)) {
-      numericDesc.innerText = "被弾数: "
-    } else {
-      numericDesc.innerText = "残機数: "
-    }
-
-    let characterInnerHTML = ""
-    for (let i = 0; i < scores.length; ++i) {
-      if (scores[i].score[difficultIndex] !== '-') {
-        characterInnerHTML += wrapWithIf("option", "value='" + i + "'", scores[i].name)
-      }
-    }
-    character.innerHTML = characterInnerHTML
-
-    calculate()
+    onUpdateDifficult()
   }
 
   onUpdateTitle()
-  onUpdateDifficult()
-  calculate()
 
   title.addEventListener("change", onUpdateTitle)
   difficult.addEventListener("change", onUpdateDifficult)

@@ -23,7 +23,7 @@ const SCORES = [
     { name: "幽冥チーム(FinalA)", score: [9, 15, 10, 16] },
     { name: "幽冥チーム(FinalB)", score: [9, 15, 10, 20] },
     { name: "霊夢(FinalA)", score: [12, 18, 13, 42] },
-    { name: "霊夢(FinalB)", score: [12, 19, 14, 72] },
+    { name: "霊夢(FinalB)", score: [12, 18, 13, 72] },
     { name: "紫(FinalA)", score: [9, 15, 10, 18] },
     { name: "紫(FinalB)", score: [9, 15, 10, 23] },
     { name: "魔理沙(FinalA)", score: [11, 17, 12, 29] },
