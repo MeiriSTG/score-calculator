@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += " ="
       scoreResult.innerText = "" + round(baseScore * Math.pow(0.5, numericValue))
     } else if (difficult.value === "Easy" && isContinued) {
-      scoreFomula.innerText = ""
-      scoreResult.innerText = baseScore
+      scoreFomula.innerText = baseScore + "/2 ="
+      scoreResult.innerText = (baseScore / 2)
     } else {
       scoreFomula.innerText = ""
       scoreFomula.innerText += baseScore
