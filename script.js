@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += numericValue
       scoreFomula.innerText += " ="
       scoreResult.innerText = "" + round(baseScore * Math.pow(0.5, numericValue))
-    } else if (difficult.value === "Easy" && isContinued) {
+    } else if ((difficult.value === "Easy" || difficult.value == "Normal") && isContinued) {
       scoreFomula.innerText = baseScore + "/2 ="
       scoreResult.innerText = (baseScore / 2)
     } else {
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const difficultIndex = difficultValueToIndex(difficult.value)
     const scores = SCORES[titleIndex]
 
-    if (difficult.value === "Easy") {
+    if (difficult.value === "Easy" || difficult.value === "Normal") {
       continued.style.display = "inline"
     } else {
       continued.style.display = "none"
