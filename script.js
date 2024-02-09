@@ -67,7 +67,7 @@ function wrapWithIf(tag, att, s) {
 }
 
 function round(n) {
-  return Math.floor(n * 100000) / 100000
+  return Math.floor(n * 10000) / 10000
 }
 
 document.addEventListener("DOMContentLoaded", () => {
