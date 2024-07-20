@@ -234,4 +234,5 @@ document.addEventListener("DOMContentLoaded", () => {
   character.addEventListener("change", calculate)
   continuedOrGameOver.addEventListener("change", calculate)
   numeric.addEventListener("change", calculate)
+  numProg.addEventListener("change", calculate)
 })
