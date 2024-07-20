@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const title = document.getElementById("title")
   const difficult = document.getElementById("difficult")
   const character = document.getElementById("character")
-  const continued = document.getElementById("continued")
+  const continuedOrGameOver = document.getElementById("continuedOrGameOver")
   const numericDesc = document.getElementById("numeric-desc")
   const numeric = document.getElementById("numeric")
   const numProgDesc = document.getElementById("numProg-desc")
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const titleIndex = titleValueToIndex(title.value)
     const difficultIndex = difficultValueToIndex(difficult.value)
     const characterIndex = Number(character.value)
-    const isContinued = continued.value === "yes"
+    const isContinuedOrGameOver = continuedOrGameOver.value === "yes"
     const numericValue = Number(numeric.value)
     const baseScore = SCORES[titleIndex][characterIndex].score[difficultIndex]
     const minBaseScore = getMinBaseScore(SCORES[titleIndex], difficultIndex)
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += numericValue
       scoreFomula.innerText += " ="
       scoreResult.innerText = "" + round(baseScore * Math.pow(0.5, numericValue))
-    } else if ((difficult.value === "Easy" || difficult.value == "Normal") && isContinued) {
+    } else if ((difficult.value === "Easy" || difficult.value == "Normal") && isContinuedOrGameOver) {
       scoreFomula.innerText = minBaseScore + "*" + numProg + " ="
       scoreResult.innerText = "" + formatNumber(Math.floor(minBaseScore * numProg * 10))
     } else {
@@ -133,9 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const scores = SCORES[titleIndex]
 
     if (difficult.value === "Easy" || difficult.value === "Normal") {
-      continued.style.display = "inline"
+      continuedOrGameOver.style.display = "inline"
     } else {
-      continued.style.display = "none"
+      continuedOrGameOver.style.display = "none"
     }
     if (isNB(difficultIndex)) {
       numericDesc.innerText = "被弾数: "
@@ -234,6 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
   title.addEventListener("change", onUpdateTitle)
   difficult.addEventListener("change", onUpdateDifficult)
   character.addEventListener("change", calculate)
-  continued.addEventListener("change", calculate)
+  continuedOrGameOver.addEventListener("change", calculate)
   numeric.addEventListener("change", calculate)
 })
