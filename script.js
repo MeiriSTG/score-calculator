@@ -132,17 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const difficultIndex = difficultValueToIndex(difficult.value)
     const scores = SCORES[titleIndex]
 
-    if (difficult.value === "Easy" || difficult.value === "Normal") {
-      continuedOrGameOver.style.display = "inline"
-    } else {
-      continuedOrGameOver.style.display = "none"
-    }
     if (isNB(difficultIndex)) {
       numericDesc.innerText = "被弾数: "
+      continuedOrGameOver.style.display = "none"
       numProgDesc.style.display = "none"
       numProg.style.display = "none"
     } else {
       numericDesc.innerText = "残機数: "
+      continuedOrGameOver.style.display = "inline"
       numProgDesc.style.display = "inline"
       numProg.style.display = "inline"
     }
