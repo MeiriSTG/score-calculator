@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += baseScore
       scoreFomula.innerText += "(1+"
       scoreFomula.innerText += numericValue
-      scoreFomula.innerText += "/10)"
+      scoreFomula.innerText += "/10) + "
       scoreFomula.innerText += minBaseScore
       scoreFomula.innerText += " ="
       scoreResult.innerText = "" + Math.floor((baseScore * (1 + 0.1 * numericValue) + minBaseScore) * 10) * 0.1
