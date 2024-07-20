@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const characterIndex = Number(character.value)
     const isContinuedOrGameOver = continuedOrGameOver.value === "yes"
     const numericValue = Number(numeric.value)
+    const numProgValue = Number(numProg.value)
     const baseScore = SCORES[titleIndex][characterIndex].score[difficultIndex]
     const minBaseScore = getMinBaseScore(SCORES[titleIndex], difficultIndex)
     if (isNB(difficultIndex)) {
@@ -113,8 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += " ="
       scoreResult.innerText = "" + round(baseScore * Math.pow(0.5, numericValue))
     } else if (isContinuedOrGameOver) {
-      scoreFomula.innerText = minBaseScore + "*" + numProg + " ="
-      scoreResult.innerText = "" + formatNumber(Math.floor(minBaseScore * numProg * 10))
+      scoreFomula.innerText = minBaseScore + "*" + numProgValue + " ="
+      scoreResult.innerText = "" + formatNumber(Math.floor(minBaseScore * numProgValue * 10))
     } else {
       scoreFomula.innerText = ""
       scoreFomula.innerText += baseScore
