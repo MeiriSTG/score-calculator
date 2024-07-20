@@ -70,6 +70,15 @@ function getMinBaseScore(scores, difficultIndex) {
   return Math.min(...scores.map(item => item.score[difficultIndex]))
 }
 
+function formatNumber(num) {
+    const str = num.toString();
+    if (str.length === 1) {
+        return '0.' + str;
+    }
+    return str.slice(0, -1) + '.' + str.slice(-1);
+}
+
+
 function round(n) {
   return Math.floor(n * 10000) / 10000
 }
@@ -107,12 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       scoreFomula.innerText = ""
       scoreFomula.innerText += baseScore
-      scoreFomula.innerText += "(1+"
+      scoreFomula.innerText += "*(1+"
       scoreFomula.innerText += numericValue
-      scoreFomula.innerText += "/10) + "
+      scoreFomula.innerText += "/10)+"
       scoreFomula.innerText += minBaseScore
       scoreFomula.innerText += " ="
-      scoreResult.innerText = "" + Math.floor((baseScore * (1 + 0.1 * numericValue) + minBaseScore) * 10) * 0.1
+      scoreResult.innerText = "" + formatNumber(Math.floor((baseScore * (1 + 0.1 * numericValue) + minBaseScore) * 10))
     }
   }
 
