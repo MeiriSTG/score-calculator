@@ -66,6 +66,10 @@ function wrapWithIf(tag, att, s) {
   }
 }
 
+function getMinBaseScore(scores, difficultIndex) {
+  return Math.min(...scores.map(item => scores.score[difficultIndex]))
+}
+
 function round(n) {
   return Math.floor(n * 10000) / 10000
 }
@@ -89,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isContinued = continued.value === "yes"
     const numericValue = Number(numeric.value)
     const baseScore = SCORES[titleIndex][characterIndex].score[difficultIndex]
+    const minBaseScore = getMinBaseScore(SCORES[titleIndex], difficultIndex)
     if (isNB(difficultIndex)) {
       scoreFomula.innerText = ""
       scoreFomula.innerText += baseScore
@@ -104,8 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += baseScore
       scoreFomula.innerText += "(1+"
       scoreFomula.innerText += numericValue
-      scoreFomula.innerText += "/10) ="
-      scoreResult.innerText = "" + round(baseScore * (1 + 0.1 * numericValue))
+      scoreFomula.innerText += "/10)"
+      scoreFomula.innerText += minBaseScore
+      scoreFomula.innerText += " ="
+      scoreResult.innerText = "" + Math.floor((baseScore * (1 + 0.1 * numericValue) + minBaseScore) * 10) * 0.1
     }
   }
 
