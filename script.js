@@ -139,10 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (isNB(difficultIndex)) {
       numericDesc.innerText = "被弾数: "
-      // numProgDesc.style.display = "none"
+      numProgDesc.style.display = "none"
     } else {
       numericDesc.innerText = "残機数: "
-      // numProgDesc.style.display = "inline"
+      numProgDesc.style.display = "inline"
     }
 
     let characterInnerHTML = ""
