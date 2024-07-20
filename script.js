@@ -137,15 +137,12 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       continued.style.display = "none"
     }
-    if (isContinued) {
-      numProgDesc.style.display = "inline"
-    } else {
-      numProgDesc.style.display = "none"
-    }
     if (isNB(difficultIndex)) {
       numericDesc.innerText = "被弾数: "
+      numProgDesc.style.display = "none"
     } else {
       numericDesc.innerText = "残機数: "
+      numProgDesc.style.display = "inline"
     }
 
     let characterInnerHTML = ""
