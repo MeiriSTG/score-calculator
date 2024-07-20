@@ -67,7 +67,7 @@ function wrapWithIf(tag, att, s) {
 }
 
 function getMinBaseScore(scores, difficultIndex) {
-  return Math.min(...scores.map(item => scores.score[difficultIndex]))
+  return Math.min(...scores.map(item => item.score[difficultIndex]))
 }
 
 function round(n) {
