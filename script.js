@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += numericValue
       scoreFomula.innerText += " ="
       scoreResult.innerText = "" + round(baseScore * Math.pow(0.5, numericValue))
-    } else if ((difficult.value === "Easy" || difficult.value == "Normal") && isContinuedOrGameOver) {
+    } else if (isContinuedOrGameOver) {
       scoreFomula.innerText = minBaseScore + "*" + numProg + " ="
       scoreResult.innerText = "" + formatNumber(Math.floor(minBaseScore * numProg * 10))
     } else {
