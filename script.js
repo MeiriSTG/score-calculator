@@ -90,6 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const continued = document.getElementById("continued")
   const numericDesc = document.getElementById("numeric-desc")
   const numeric = document.getElementById("numeric")
+  const numProgDesc = document.getElementById("numProg-desc")
+  const numProg = document.getElementById("numProg")
   const scoreFomula = document.getElementById("score-fomula")
   const scoreResult = document.getElementById("score-result")
   const scoreTable = document.getElementById("score-table")
@@ -134,6 +136,11 @@ document.addEventListener("DOMContentLoaded", () => {
       continued.style.display = "inline"
     } else {
       continued.style.display = "none"
+    }
+    if (isContinued) {
+      numProgDesc.style.display = "inline"
+    } else {
+      numProgDesc.style.display = "none"
     }
     if (isNB(difficultIndex)) {
       numericDesc.innerText = "被弾数: "
