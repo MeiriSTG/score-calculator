@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += "-"
       scoreFomula.innerText += numericValue
       scoreFomula.innerText += "*10 ="
-      scoreResult.innerText = "" + Math.min(baseScore - numericValue * 10, 0)
+      scoreResult.innerText = "" + Math.max(baseScore - numericValue * 10, 0)
     } else if (isContinuedOrGameOver) {
       scoreFomula.innerText = minBaseScore + "*" + numProgValue + "*10 ="
       scoreResult.innerText = "" + Math.floor(minBaseScore * numProgValue * 10)
