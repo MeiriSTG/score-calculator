@@ -22,8 +22,8 @@ function difficultValueToIndex(value) {
     case "Easy,Normal": return 0
     case "Hard,Lunatic": return 1
     case "Extra(,Phantasm)": return 2
-    case "NNB": return 3
-    case "LNB": return 4
+    case "Normal-NB": return 3
+    case "Lunatic-NB": return 4
   }
 }
 
@@ -141,8 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
     difficultInnerHTML += "<option>Easy,Normal</option>"
     difficultInnerHTML += "<option>Hard,Lunatic</option>"
     difficultInnerHTML += "<option>Extra(,Phantasm)</option>"
-    difficultInnerHTML += "<option>NNB</option>"
-    difficultInnerHTML += "<option>LNB</option>"
+    difficultInnerHTML += "<option>Normal-NB</option>"
+    difficultInnerHTML += "<option>Lunatic-NB</option>"
     difficult.innerHTML = difficultInnerHTML
 
     // character
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreTableInnerHTML += "<tr>"
     scoreTableInnerHTML += "<th></th><th>Easy, Normal</th><th>Hard, Lunatic</th>"
     scoreTableInnerHTML += (isWithPhanrasm(index) ? "<th>Extra, Phantasm</th>" : "<th>Extra</th>")
-    scoreTableInnerHTML += "<th>NNB</th><th>LNB</th>"
+    scoreTableInnerHTML += "<th>Normal-NB</th><th>Lunatic-NB</th>"
     scoreTableInnerHTML += "</tr>"
     // 2. body
     for (const score of scores) {
