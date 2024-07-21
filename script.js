@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreTableInnerHTML += "<tr>"
     scoreTableInnerHTML += "<th></th><th>Easy, Normal</th><th>Hard, Lunatic</th>"
     scoreTableInnerHTML += (isWithPhanrasm(index) ? "<th>Extra, Phantasm</th>" : "<th>Extra</th>")
-    scoreTableInnerHTML += "<th></th><th>NNB</th><th>LNB</th>"
+    scoreTableInnerHTML += "<th>NNB</th><th>LNB</th>"
     scoreTableInnerHTML += "</tr>"
     // 2. body
     for (const score of scores) {
