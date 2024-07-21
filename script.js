@@ -49,12 +49,6 @@ function getMinBaseScore(scores, difficultIndex) {
   return Math.min(...numericScores)
 }
 
-function getMaxBaseScore(scores, difficultIndex) {
-  const numericScores = scores.map(item => item.score[difficultIndex])
-                              .filter(score => isFinite(score))
-  return Math.max(...numericScores)
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const title = document.getElementById("title")
   const difficult = document.getElementById("difficult")
@@ -78,16 +72,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const numProgValue = Number(numProg.value)
     const baseScore = SCORES[titleIndex][characterIndex].score[difficultIndex]
     const minBaseScore = getMinBaseScore(SCORES[titleIndex], difficultIndex)
-    const maxBaseScore = getMaxBaseScore(SCORES[titleIndex], difficultIndex)
     if (isNB(difficultIndex)) {
       scoreFomula.innerText = ""
-      scoreFomula.innerText += numericValue
-      scoreFomula.innerText += "*10-"
       scoreFomula.innerText += baseScore
-      scoreFomula.innerText += "+"
-      scoreFomula.innerText += maxBaseScore
-      scoreFomula.innerText += " ="
-      scoreResult.innerText = "" + (numericValue * 10 - baseScore + maxBaseScore)
+      scoreFomula.innerText += "-"
+      scoreFomula.innerText += numericValue
+      scoreFomula.innerText += "*10 ="
+      scoreResult.innerText = "" + Math.min(baseScore - numericValue * 10, 0)
     } else if (isContinuedOrGameOver) {
       scoreFomula.innerText = minBaseScore + "*" + numProgValue + "*10 ="
       scoreResult.innerText = "" + Math.floor(minBaseScore * numProgValue * 10)
