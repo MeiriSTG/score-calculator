@@ -25,8 +25,8 @@ function difficultValueToIndex(value) {
     case "Lunatic": return 1
     case "Extra": return 2
     case "Phantasm": return 2
-    case "NB": return 3
-    case "NB+ FS": return 4
+    case "NNB": return 3
+    case "LNB": return 4
   }
 }
 
@@ -34,6 +34,7 @@ function isWithPhanrasm(index) {
   return index === 1
 }
 
+// 要チェック
 function isWithNBFS(index) {
   return index === 4 || index === 7
 }
@@ -50,6 +51,7 @@ function getLabelOfPhanrasm(index) {
   }
 }
 
+// 要チェック
 function getLabelOfNBFS(index) {
   if (isWithNBFS(index)) {
     return "NB+ FS"
@@ -67,7 +69,15 @@ function wrapWithIf(tag, att, s) {
 }
 
 function getMinBaseScore(scores, difficultIndex) {
-  return Math.min(...scores.map(item => item.score[difficultIndex]))
+  const numericScores = scores.map(item => item.score[difficultIndex])
+                              .filter(score => isFinite(score))
+  return Math.min(...numericScores)
+}
+
+function getMaxBaseScore(scores, difficultIndex) {
+  const numericScores = scores.map(item => item.score[difficultIndex])
+                              .filter(score => isFinite(score))
+  return Math.max(...numericScores)
 }
 
 function formatNumber(num) {
@@ -76,11 +86,6 @@ function formatNumber(num) {
         return '0.' + str;
     }
     return str.slice(0, -1) + '.' + str.slice(-1);
-}
-
-
-function round(n) {
-  return Math.floor(n * 10000) / 10000
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -106,13 +111,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const numProgValue = Number(numProg.value)
     const baseScore = SCORES[titleIndex][characterIndex].score[difficultIndex]
     const minBaseScore = getMinBaseScore(SCORES[titleIndex], difficultIndex)
+    const maxBaseScore = getMaxBaseScore(SCORES[titleIndex], difficultIndex)
     if (isNB(difficultIndex)) {
       scoreFomula.innerText = ""
-      scoreFomula.innerText += baseScore
-      scoreFomula.innerText += "(1/2)^"
       scoreFomula.innerText += numericValue
+      scoreFomula.innerText += "-"
+      scoreFomula.innerText += baseScore
+      scoreFomula.innerText += "+"
+      scoreFomula.innerText += maxBaseScore
       scoreFomula.innerText += " ="
-      scoreResult.innerText = "" + round(baseScore * Math.pow(0.5, numericValue))
+      scoreResult.innerText = "" + formatNumber((numericValue - baseScore + maxBaseScore) * 10)
     } else if (isContinuedOrGameOver) {
       scoreFomula.innerText = minBaseScore + "*" + numProgValue + " ="
       scoreResult.innerText = "" + formatNumber(Math.floor(minBaseScore * numProgValue * 10))
