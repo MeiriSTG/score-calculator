@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreFomula.innerText += "+"
       scoreFomula.innerText += maxBaseScore
       scoreFomula.innerText += " ="
-      scoreResult.innerText = "" + formatNumber((numericValue - baseScore + maxBaseScore) * 10)
+      scoreResult.innerText = "" + formatNumber(Math.floor((numericValue - baseScore + maxBaseScore) * 10))
     } else if (isContinuedOrGameOver) {
       scoreFomula.innerText = minBaseScore + "*" + numProgValue + " ="
       scoreResult.innerText = "" + formatNumber(Math.floor(minBaseScore * numProgValue * 10))
