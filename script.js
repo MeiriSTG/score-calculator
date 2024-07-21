@@ -19,12 +19,9 @@ function titleValueToIndex(value) {
 
 function difficultValueToIndex(value) {
   switch (value) {
-    case "Easy": return 0
-    case "Normal": return 0
-    case "Hard": return 1
-    case "Lunatic": return 1
-    case "Extra": return 2
-    case "Phantasm": return 2
+    case "Easy,Normal": return 0
+    case "Hard,Lunatic": return 1
+    case "Extra(,Phantasm)": return 2
     case "NNB": return 3
     case "LNB": return 4
   }
@@ -171,12 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // difficult
     let difficultInnerHTML = ""
-    difficultInnerHTML += "<option>Easy</option>"
-    difficultInnerHTML += "<option>Normal</option>"
-    difficultInnerHTML += "<option>Hard</option>"
-    difficultInnerHTML += "<option>Lunatic</option>"
-    difficultInnerHTML += "<option>Extra</option>"
-    difficultInnerHTML += wrapWithIf("option", "", getLabelOfPhanrasm(index))
+    difficultInnerHTML += "<option>Easy,Normal</option>"
+    difficultInnerHTML += "<option>Hard,Lunatic</option>"
+    difficultInnerHTML += "<option>Extra(,Phantasm)</option>"
     difficultInnerHTML += "<option>NNB</option>"
     difficultInnerHTML += "<option>LNB</option>"
     difficult.innerHTML = difficultInnerHTML
