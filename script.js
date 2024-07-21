@@ -31,30 +31,8 @@ function isWithPhanrasm(index) {
   return index === 1
 }
 
-// 要チェック
-function isWithNBFS(index) {
-  return index === 4 || index === 7
-}
-
 function isNB(index) {
   return index === 3 || index === 4
-}
-
-function getLabelOfPhanrasm(index) {
-  if (isWithPhanrasm(index)) {
-    return "Phantasm"
-  } else {
-    return undefined
-  }
-}
-
-// 要チェック
-function getLabelOfNBFS(index) {
-  if (isWithNBFS(index)) {
-    return "NB+ FS"
-  } else {
-    return undefined
-  }
 }
 
 function wrapWithIf(tag, att, s) {
@@ -75,14 +53,6 @@ function getMaxBaseScore(scores, difficultIndex) {
   const numericScores = scores.map(item => item.score[difficultIndex])
                               .filter(score => isFinite(score))
   return Math.max(...numericScores)
-}
-
-function formatNumber(num) {
-    const str = num.toString();
-    if (str.length === 1) {
-        return '0.' + str;
-    }
-    return str.slice(0, -1) + '.' + str.slice(-1);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -112,24 +82,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNB(difficultIndex)) {
       scoreFomula.innerText = ""
       scoreFomula.innerText += numericValue
-      scoreFomula.innerText += "-"
+      scoreFomula.innerText += "*10-"
       scoreFomula.innerText += baseScore
       scoreFomula.innerText += "+"
       scoreFomula.innerText += maxBaseScore
       scoreFomula.innerText += " ="
-      scoreResult.innerText = "" + formatNumber(Math.floor((numericValue - baseScore + maxBaseScore) * 10))
+      scoreResult.innerText = "" + (numericValue * 10 - baseScore + maxBaseScore)
     } else if (isContinuedOrGameOver) {
-      scoreFomula.innerText = minBaseScore + "*" + numProgValue + " ="
-      scoreResult.innerText = "" + formatNumber(Math.floor(minBaseScore * numProgValue * 10))
+      scoreFomula.innerText = minBaseScore + "*" + numProgValue + "*10 ="
+      scoreResult.innerText = "" + Math.floor(minBaseScore * numProgValue * 10)
     } else {
       scoreFomula.innerText = ""
       scoreFomula.innerText += baseScore
-      scoreFomula.innerText += "*(1+"
+      scoreFomula.innerText += "*(10+"
       scoreFomula.innerText += numericValue
-      scoreFomula.innerText += "/10)+"
+      scoreFomula.innerText += ")+"
       scoreFomula.innerText += minBaseScore
-      scoreFomula.innerText += " ="
-      scoreResult.innerText = "" + formatNumber(Math.floor((baseScore * (1 + 0.1 * numericValue) + minBaseScore) * 10))
+      scoreFomula.innerText += "*10 ="
+      scoreResult.innerText = "" + (baseScore * (10 + numericValue) + minBaseScore * 10)
     }
   }
 
