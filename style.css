@@ -45,3 +45,9 @@ select {
 #score-table tr:nth-child(odd) td {
   background-color: #DDD;
 }
+
+#numeric, #numProg {
+  width: 5rem;
+  height: 2rem;
+  font-size: 1rem;
+}
