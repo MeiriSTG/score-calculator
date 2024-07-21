@@ -177,8 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
     difficultInnerHTML += "<option>Lunatic</option>"
     difficultInnerHTML += "<option>Extra</option>"
     difficultInnerHTML += wrapWithIf("option", "", getLabelOfPhanrasm(index))
-    difficultInnerHTML += "<option>NB</option>"
-    difficultInnerHTML += wrapWithIf("option", "", getLabelOfNBFS(index))
+    difficultInnerHTML += "<option>NNB</option>"
+    difficultInnerHTML += "<option>LNB</option>"
     difficult.innerHTML = difficultInnerHTML
 
     // character
@@ -196,8 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreTableInnerHTML += "<tr>"
     scoreTableInnerHTML += "<th></th><th>Easy, Normal</th><th>Hard, Lunatic</th>"
     scoreTableInnerHTML += (isWithPhanrasm(index) ? "<th>Extra, Phantasm</th>" : "<th>Extra</th>")
-    scoreTableInnerHTML += "<th>NB</th>"
-    scoreTableInnerHTML += wrapWithIf("th", "", getLabelOfNBFS(index))
+    scoreTableInnerHTML += "<th></th><th>NNB</th><th>LNB</th>"
     scoreTableInnerHTML += "</tr>"
     // 2. body
     for (const score of scores) {
